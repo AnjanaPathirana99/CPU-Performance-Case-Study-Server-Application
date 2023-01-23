@@ -18,7 +18,7 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
-  socket.on("send message", (data) => {
+  socket.on("çpu_usage", (data) => {
     console.log(data);
     socket.broadcast.emit("receive message", data);
   });
