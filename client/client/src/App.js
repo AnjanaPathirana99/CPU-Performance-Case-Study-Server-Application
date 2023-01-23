@@ -1,28 +1,39 @@
 import "./App.css";
+import { Route } from "react-router-dom";
 import io from "socket.io-client";
 import { useEffect } from "react";
+import Login from "./components/login";
+import Homepage from "./components/homepage";
 
-const socket = io.connect("http://localhost:3001"); //POrt number of the server
-
-function App() {
-  const sendMessage = () => {
-    socket.emit("send message", { message: "Hi" });
-  };
-
-  useEffect(() => {
-    socket.on("receive message", (data) => {
-      alert(data.message);
-    });
-  });
+const App = () => {
   return (
-    <div className="App">
-      <form>
-        <label htmlFor="fname">Message</label>
-        <input type="text" id="fname" name="fname"></input>
-        <button onClick={sendMessage}>send</button>
-      </form>
+    <div>
+      <switch>
+        <Route path="/login" component={Login} />
+        <Route path="/homepage" component={Homepage} />
+      </switch>
     </div>
   );
-}
+};
 
 export default App;
+
+// const socket = io.connect("http://localhost:3001"); //POrt number of the server
+
+// const sendMessage = () => {
+//   socket.emit("send message", { message: "Hi" });
+// };
+// useEffect(() => {
+//   socket.on("receive message", (data) => {
+//     alert(data.message);
+//   });
+// });
+// return (
+//   <div className="App">
+//     <form>
+//       <label htmlFor="fname">Message</label>
+//       <input type="text" id="fname" name="fname"></input>
+//       <button onClick={sendMessage}>send</button>
+//     </form>
+//   </div>
+// );
