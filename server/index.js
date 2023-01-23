@@ -10,9 +10,18 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", //port number check when running app
+    origin: "http://localhost:3000", //port number of the client
     methods: ["GET", "POST"],
   },
+});
+
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id}`);
+
+  socket.on("send message", (data) => {
+    console.log(data);
+    socket.broadcast.emit("receive message", data);
+  });
 });
 
 server.listen(3001, () => {
