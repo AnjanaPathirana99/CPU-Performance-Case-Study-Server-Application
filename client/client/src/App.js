@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import io from "socket.io-client";
 import { useEffect } from "react";
 import Login from "./components/login";
@@ -8,10 +8,10 @@ import Homepage from "./components/homepage";
 const App = () => {
   return (
     <div>
-      <switch>
+      <Routes>
         <Route path="/login" component={Login} />
         <Route path="/homepage" component={Homepage} />
-      </switch>
+      </Routes>
     </div>
   );
 };
