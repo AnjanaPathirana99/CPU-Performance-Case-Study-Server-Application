@@ -8,7 +8,7 @@ class Login extends Component {
   };
   handleChange = (e) => {
     const account = { ...this.state.account };
-    account.username = e.currentTarget.value;
+    account[e.currentTarget.name] = e.currentTarget.value;
     this.setState({ account });
   };
   handleSubmit = (e) => {
@@ -25,13 +25,20 @@ class Login extends Component {
             autoFocus={true}
             value={this.state.account.username}
             onChange={this.handleChange}
+            name="username"
             type="text"
             placeholder="Enter username"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={this.handleChange}
+            value={this.state.account.password}
+            name="password"
+          />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
