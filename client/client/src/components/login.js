@@ -56,8 +56,8 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <Form onSubmit={this.handleSubmit}>
+      <div className="loginPage">
+        <Form className="loginForm" onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -83,8 +83,13 @@ class Login extends Component {
               error={this.state.errors.password}
             />
           </Form.Group>
-          <Button disabled={this.validate()} variant="primary" type="submit">
-            Submit
+          <Button
+            className="submitButton"
+            disabled={this.validate()}
+            variant="primary"
+            type="submit"
+          >
+            Login
           </Button>
         </Form>
       </div>

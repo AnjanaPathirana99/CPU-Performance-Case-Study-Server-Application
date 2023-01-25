@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+/* .loginPage {
+  background-image: url("https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg");
+} */
+.loginPage {
+  margin-left: 500px;
+  margin-right: 500px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.submitButton {
+  margin: 16px;
+  position: relative;
+  margin-left: 225px;
+}
