@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 const validateUser = (user) => {
+  //if error update to normal function
   const schema = {
     username: Joi.string().min(5).max(255).required(),
     password: Joi.string().min(8).max(1024).required(),
