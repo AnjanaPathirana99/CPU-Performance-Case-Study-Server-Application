@@ -68,7 +68,7 @@ class Login extends Component {
               label="Username"
               onChange={this.handleChange}
               placeholder="Enter username"
-              // error={errors.username}
+              error={this.state.errors.username}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -80,10 +80,10 @@ class Login extends Component {
               type="password"
               placeholder="Password"
               onChange={this.handleChange}
-              // error={errors.password}
+              error={this.state.errors.password}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button disabled={this.validate()} variant="primary" type="submit">
             Submit
           </Button>
         </Form>
