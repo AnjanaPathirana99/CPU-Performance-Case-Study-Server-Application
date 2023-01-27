@@ -29,5 +29,5 @@ res.send(validation);
 
 return Joi.validate(user, schema);
 
-exports.User = User;
+exports.User = User; //check the error
 exports.validate = validateUser;
