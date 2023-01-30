@@ -1,10 +1,14 @@
+//Admin Server
 const express = require("express");
 const app = express();
 const http = require("http");
 const { Server } = require("socket.io");
+const socketClient = require("socket.io-client"); //Day end commit
 const cors = require("cors");
 
 app.use(cors());
+
+const socketClient = socketClient.connect("http://localhost:3002"); //Port number of the admin UI //Day end commit
 
 const server = http.createServer(app);
 
@@ -20,10 +24,10 @@ io.on("connection", (socket) => {
 
   socket.on("çpu_usage", (highCpuUsage, pcName) => {
     console.log(highCpuUsage, pcName);
-    socket.broadcast.emit("receive message", highCpuUsage, pcName);
+    socketClient.emit("receive message", highCpuUsage, pcName);
   });
 });
 
 server.listen(3001, () => {
-  console.log("Server is running");
+  console.log("Server is running"); //PORT 3001
 });

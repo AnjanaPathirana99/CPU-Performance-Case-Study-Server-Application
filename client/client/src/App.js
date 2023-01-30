@@ -4,13 +4,15 @@ import io from "socket.io-client";
 import { useEffect } from "react";
 import Login from "./components/login";
 import Homepage from "./components/homepage";
+import CpuUsageTable from "./components/cpuUsageView";
 
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/cpuUsageTable" element={<CpuUsageTable />} />
+        {/* Day end commit-above line */}
       </Routes>
     </div>
   );
