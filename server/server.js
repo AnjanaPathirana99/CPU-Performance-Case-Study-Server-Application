@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(cors());
 
-const socketClient = socketClient.connect("http://localhost:3002"); //Port number of the admin UI //Day end commit
+const client = socketClient.connect("http://localhost:3002"); //Port number of the admin UI //Day end commit
 
 const server = http.createServer(app);
 
@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
 
   socket.on("çpu_usage", (highCpuUsage, pcName) => {
     console.log(highCpuUsage, pcName);
-    socketClient.emit("receive message", highCpuUsage, pcName);
+    client.emit("receive message", highCpuUsage, pcName);
   });
 });
 
