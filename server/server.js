@@ -3,12 +3,10 @@ const express = require("express");
 const app = express();
 const http = require("http");
 const { Server } = require("socket.io");
-const socketClient = require("socket.io-client"); //Day end commit
+const socketClient = require("socket.io-client");
 const cors = require("cors");
 
 app.use(cors());
-
-const client = socketClient.connect("http://localhost:3002"); //Port number of the admin UI //Day end commit
 
 const server = http.createServer(app);
 
@@ -24,7 +22,10 @@ io.on("connection", (socket) => {
 
   socket.on("çpu_usage", (highCpuUsage, pcName) => {
     console.log(highCpuUsage, pcName);
-    client.emit("receive message", highCpuUsage, pcName);
+    app.get("/api/cpuUsages", (req, res) => {
+      const cpuUsage = highCpuUsage;
+      res.send(cpuUsage);
+    });
   });
 });
 
