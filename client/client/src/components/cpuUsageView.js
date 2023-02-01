@@ -46,5 +46,3 @@ function CpuUsageTable() {
 }
 
 export default CpuUsageTable;
-
-//whole file //Day end commit
