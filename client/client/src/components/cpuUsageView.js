@@ -1,23 +1,35 @@
 import React, { useState, useEffect, Fragment } from "react";
-import io from "socket.io-client";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 
-function CpuUsageTable() {
+const CpuUsageTable = () => {
   const cpuUsagePercentageConstant = 2 ** 20;
   const [usages, setUsages] = useState([]);
   // const [pcName, setPcName] = useState();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/cpuUsages")
-      .then((res) => {
-        setUsages(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/api/cpuUsages");
+        setUsages(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setInterval(() => {
+      fetchData();
+    }, 1000);
+  });
+  // const intervalId = setInterval(() => {
+  //   fetchData();
+  // }, 1000);
+
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
+  //   fetchData();
+  // }, []);
 
   console.log(usages);
 
@@ -43,6 +55,6 @@ function CpuUsageTable() {
       </Table>
     </Fragment>
   );
-}
+};
 
 export default CpuUsageTable;
